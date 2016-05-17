@@ -12,18 +12,17 @@ def save(obj):
 """A decorator which validates email addresses"""
 def validate_email(func):  # Decorator receives function as param
     def wrapper(*args, **kwargs):  # Wrapper-closure wraps the function
-        data = func(*args, **kwargs)  # Take positional and keyword params from original function
+        data = func(*args, **kwargs)  # Execute decorated function and get returned values (if any)
         print("Hello from inside your decorator, i can see: {}".format(locals()))
         if not email_re.match(kwargs['addr']):
             raise ValueError("Not a valid email address")
-        return data
+        return data  # Maybe empty
     return wrapper
 
 @validate_email
 def save_email(addr):
     save(addr)
 
-
 if __name__ == '__main__':
     save_email(addr="decorate<at>yourhome.net")
-    #save_email(addr="decorate@yourhome.net")
+#    save_email(addr="decorate@yourhome.net")
