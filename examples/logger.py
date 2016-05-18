@@ -9,10 +9,14 @@ def logthis(log_msg="", severity="INFO"):  # Decorators with two positional para
         return wrapper
     return real_decorator
 
-@logthis("Main function called", "WARN")
+@logthis("Fancy shit happend", "ERROR")
 def main():
     return "Did some fancy stuff"
 
+@logthis("anotherone bit the dust", "GOGO!")
+def anotherone():
+    return
+
 
 if __name__ == '__main__':
-    main()
+    anotherone()
